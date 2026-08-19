@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,8 +33,11 @@
         body::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: 
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
                 linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
@@ -131,13 +135,17 @@
             margin: 40px 0 20px 0;
         }
 
-        .platform-divider::before, .platform-divider::after {
+        .platform-divider::before,
+        .platform-divider::after {
             content: '';
             flex: 1;
             height: 1px;
             background: rgba(255, 255, 255, 0.08);
         }
-        .platform-divider span { padding: 0 15px; }
+
+        .platform-divider span {
+            padding: 0 15px;
+        }
 
         .platform-grid {
             display: grid;
@@ -172,16 +180,18 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="hero-container">
         <div class="badge">Minecraft Client</div>
         <h1>RYXI LAUNCHER</h1>
-        <p class="subtitle">Experience high performance, optimized FPS stability, and a fully custom modding workspace straight out of the box.</p>
-        
+        <p class="subtitle">Experience high performance, optimized FPS stability, and a fully custom modding workspace
+            straight out of the box.</p>
+
         <div class="primary-download-wrapper">
-            <!-- HARDCODED TO BASE WINDOWS INSTALLER LINK AS DEFAULT FALLBACK -->
-            <a href="https://github.com" id="dynamic-download-link" download class="main-btn">
+            <!-- HARDCODED TO BASE LOCAL WINDOWS INSTALLER LINK AS DEFAULT FALLBACK -->
+            <a href="https://github.com/ran9150/ryxi-launcher-files/releases/download/v1.0.0/Ryxi-Launcher-Setup-1.0.0-x64.exe" id="dynamic-download-link" download class="main-btn">
                 <span>Download Ryxi Launcher</span>
             </a>
             <span id="os-badge" class="detected-os-text">Detecting platform configuration...</span>
@@ -191,17 +201,17 @@
             <span>All Target Distributions</span>
         </div>
 
-        <!-- HARDCODED LINKS IN GRID MATRIX TO BYPASS SCRIPT LATENCY BLOCKS -->
+        <!-- FIXED HARDCODED PATHS RELATIVE TO YOUR WEBSITE ROOT ASSETS -->
         <div class="platform-grid">
-            <a href="https://github.com/ran-nachshon/ryxi-launcher-files/releases/download/v1.0.0/Ryxi-Launcher-Setup-1.0.0-x64.exe" id="grid-win" download class="platform-card">
+            <a href="https://github.com/ran9150/ryxi-launcher-files/releases/download/v1.0.0/Ryxi-Launcher-Setup-1.0.0-x64.exe" id="grid-win" download class="platform-card">
                 Windows
                 <span>Setup .exe</span>
             </a>
-            <a href="https://github.com/ran-nachshon/ryxi-launcher-files/releases/download/v1.0.0/Ryxi-Launcher-Universal.zip" id="grid-mac" download class="platform-card">
+            <a href="https://github.com/ran9150/ryxi-launcher-files/releases/download/v1.0.0/Ryxi-Launcher-Universal.zip" id="grid-mac" download class="platform-card">
                 macOS
                 <span>Universal .zip</span>
             </a>
-            <a href="https://github.com/ran-nachshon/ryxi-launcher-files/releases/download/v1.0.0/Ryxi-Launcher-Universal.zip" id="grid-linux" download class="platform-card">
+            <a href="https://github.com/ran9150/ryxi-launcher-files/releases/download/v1.0.0/Ryxi-Launcher-Universal.zip" id="grid-linux" download class="platform-card">
                 Linux
                 <span>Universal .zip</span>
             </a>
@@ -209,20 +219,20 @@
     </div>
 
     <script>
-        // Real Live GitHub Releases Links Matrix
+        // Local Asset Paths Configuration Mapping Matrix
         const links = {
-            win: "https://github.com/ran-nachshon/ryxi-launcher-files/releases/download/v1.0.0/Ryxi-Launcher-Setup-1.0.0-x64.exe",
-            mac: "https://github.com/ran-nachshon/ryxi-launcher-files/releases/download/v1.0.0/Ryxi-Launcher-Universal.zip",
-            linux: "https://github.com/ran-nachshon/ryxi-launcher-files/releases/download/v1.0.0/Ryxi-Launcher-Universal.zip"
+            win: "https://github.com/ran9150/ryxi-launcher-files/releases/download/v1.0.0/Ryxi-Launcher-Setup-1.0.0-x64.exe",
+            mac: "https://github.com/ran9150/ryxi-launcher-files/releases/download/v1.0.0/Ryxi-Launcher-Universal.zip",
+            linux: "https://github.com/ran9150/ryxi-launcher-files/releases/download/v1.0.0/Ryxi-Launcher-Universal.zip"
         };
 
         const mainBtnLink = document.getElementById('dynamic-download-link');
         const osBadge = document.getElementById('os-badge');
-        
+
         // Comprehensive multiplatform verification engine
         const platform = (navigator.userAgentData?.platform || navigator.platform || "").toLowerCase();
         const userAgent = navigator.userAgent.toLowerCase();
-        
+
         if (platform.includes("win") || userAgent.includes("windows")) {
             mainBtnLink.href = links.win;
             osBadge.innerText = "Recommended Setup Detected: Windows PC (.exe)";
@@ -237,8 +247,12 @@
             mainBtnLink.href = links.win;
             osBadge.innerText = "Defaulting download asset package to Windows Setup (.exe)";
         }
+
+        // Apply fallback targets to grid elements automatically
+        document.getElementById('grid-win').href = links.win;
+        document.getElementById('grid-mac').href = links.mac;
+        document.getElementById('grid-linux').href = links.linux;
     </script>
 </body>
+
 </html>
-
-
